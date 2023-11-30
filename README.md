@@ -17,4 +17,8 @@ If you enjoyed the calendaR and would like to show your appreciation, please con
 
 <a href="https://colchester.bigbrothersbigsisters.ca/donate/">Big Brothers Big Sisters of Colchester</a>
 
+*** TO GET STARTED ***
+
+Download the folder advent_calendaR and put it on your Desktop. Then... wait for December 1st ;)
+
 
