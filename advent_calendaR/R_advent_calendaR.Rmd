@@ -1,0 +1,833 @@
+---
+title: "25 days of chRistmas: an R advent calendaR!"
+output: html_notebook
+---
+**BEFORE WE BEGIN**
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button (green arrow) within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+
+```{r}
+plot(cars)
+```
+
+Okay... now back to our calendaR!
+----
+
+**25 days of chRistmas: an R advent calendaR**
+
+### DAY 1 ###
+
+On the first day of Christmas my true love (or some random person from the internet) gave to me…
+
+…the weirdest advent calendar ever: a 25-day R tutorial!
+
+While this is arguably less delicious than chocolate (depends who you ask), it might prove to be more useful (again, depends who you ask).
+
+I’ve put together a very different type of advent calendar this year, one that will teach you some of the basics in R. Every day you will learn one new little thing. This is designed for people who have zero experience using R, and each day is meant to take only a few minutes. By Christmas, you should have a nice R script summarizing some of the basic concepts in R!
+
+So for day one all you have to do is make sure you have R downloaded. One of the best things about R is that it is free and open source!
+
+Also, I recommend you download R Studio (also free) and use that instead of R (but you might need to have R as well for R Studio to work). 
+
+https://mirror.its.dal.ca/cran/
+
+https://rstudio.com/products/rstudio/download/
+
+That is all for today. If you want to make your R studio more fun, you can go to Preferences > Appearance (Mac), then choose a fun colour combo for your R Studio! Pro tip: for some reason people think you’re some sort of coding wiz when you use a dark background with light text, I have no idea why.
+
+### DAY 2 ###
+
+On the second day of Christmas…
+
+…you will familiarize yourself with the layout of R Studio.
+
+You should see four windows in front of you.
+
+Top left is the “source” window. This is where you see your script and where you type your code. You will typically want to save your script (i.e. everything in this window) fairly regularly. 
+
+**Scripts will be saved as an R script file. If you open a saved script file it will show in the source window. You can have multiple scripts open at the same time as tabs. This is also true for R Markdown (.rmd) files, which we are currently working in!
+
+Bottom left is the “console”. When we type run code in our script (displayed in our source window), you should see some sort of output in the console. Some examples: If you run a code and there’s something wrong with it, this is where you will see the error message. If you run a statistical test, this is where the results will be displayed. 
+
+Top right is the “environment: window. This shows a list of all the data, values, and functions you currently have available in R studio. If you create a new vector, it will be added to this list. 
+
+Bottom right is where your packages, plots, and help will be displayed. If you create a plot, this is where it will pop up. A list of all packages currently downloaded and loaded is under the ‘packages’ tab. The “help” tab is a handy resource - we will talk more about this later on.
+
+### DAY 3 ###
+
+On the third day of Christmas…
+
+…you get to learn how to set your working directory (and also check where your working directory is!).
+
+Start by making sure the “advent_calendaR” folder is on your desktop (or create one with that exact file name, advent_calendaR - note: R is case sensitive so make sure you get that capital R in there!). You can change your working directory in the future when you’ve set up a proper folder for your R data and scripts. For the purpose of this tutorial, we’ll make the advent_calendar folder your working directory.
+
+Also make sure that the two .csv files are in your advent_calendaR folder. This will be important in the days ahead...
+
+```{r}
+setwd("~/Desktop/advent_calendaR/")
+getwd()
+```
+
+To run your code, click anywhere in the line of code and press command + enter at the same time. You should see the output from your code in the console! Did it work?
+
+In R Markdowm (or R Notebook files), remember that you can also run the code by clicking the little green arrow to the right. This will run the entire "chunk".
+
+setwd() and getwd() are examples of ‘functions’. Functions perform specific tasks and are usually identified as a word or combination of words followed by (). We usually fill in () with what we want the function to act on - though as you can see with getwd() we don’t always need to fill in ()
+
+### DAY 4 ###
+
+On the fourth day of Christmas…
+
+…you’re going to play with numbers!
+
+Here’s some basic code you can run. Just like in Excel or on a calculator, R can do simple calculations for you so that you don’t have to think too hard! 
+
+To run each line at a time, click anywhere in the line of code and run each line. To run them all at once, highlight the entire code and run it. R shortcut: to run code press Ctrl + enter (PC) or Command + enter (Mac). ** Remember ** in R Markdown you can also run all the code at once by pressing the green arrow. Notice that in R Markdown, the output will appear directly below the chunk AND in the console.
+
+```{r}
+2+5 
+2^5
+67^8
+log(25)
+sqrt(25)
+abs(-25)
+```
+P.S. log(), sqrt(), abs() are examples of functions (more about this soon…)
+
+### DAY 5 ###
+
+On the fifth day of Christmas…
+
+…you will learn of a very helpful little tool…. the ?
+
+When you’re not sure what a function does or you can’t remember, simple type ? in front of it, then run that line of code.
+
+Try it: 
+
+```{r}
+?sqrt
+```
+*Note: ?sqrt() or ?sqrt will give you the same output
+
+Some other helpful tips:
+
+- Don't forget that R is case sensitive! For example, Sqrt() will not work
+- When you get error messages, it’s often because of a minor typo or perhaps a missed or extra bracket, comma, etc. Double check your code and try again.
+
+### DAY 6 ###
+
+On the sixth day of Christmas…
+
+…you going to learn about vectors!
+
+Instead of a single number or character, vectors allow us to group many together.
+
+For example, run this line of code:
+
+```{r}
+numbers <- c(1,2,3,4,5)
+numbers
+```
+
+Now highlight just the word ‘numbers’ or retype it below and run it. Your numbers should come up in the output. Just like that! You just created a vector. This is called a numeric vector. Note that the numbers do not need to be in “ “.
+
+The other type of vector is called a character vector. Here’s a fun one:
+
+```{r}
+hi <-c("Happy holidays, I hope you have a wonderful day!")
+hi
+```
+
+I've typed "hi" below, so you can run that (or highlight the word hi in your console and run). Note that the words DO need to be in "". Also note: if your vector includes words and numbers, R will consider everything as characters.
+
+Vectors make our lives easier when we don’t want to type out long lists of code (especially if the vector is an entire dataset!).
+
+As an example of what we can do with a vector, let’s do something with your first vector:
+
+```{r}
+sum(numbers)
+```
+
+Vectors are super useful, you will use them a lot. 
+
+***R fun fact: the c in c() stands for “concatenate” or ‘to link together’. You can save that one for parties with other R nerds. You’re welcome.
+
+### DAY 7 ###
+
+On the seventh day of Christmas…
+
+…you will learn about operators.
+
+You’re already seen <- (referred to as the ‘assignment operator’). 
+
+Here are some useful logical operators you might need to use. If you forget them, search “logical operators in R” online. Or type this code into R: ?base::Logic
+
+Check it out:
+```{r}
+?base::Logic
+```
+
+
+< 	less than
+<= 	less than or equal to
+> 	greater than
+>= 	greater than or equal to
+== 	exactly equal to
+!= 	not equal to
+
+Try them out with these codes:
+```{r}
+x <-2
+y <-10
+x<y
+x>y
+y>=100
+```
+
+
+### DAY 8 ###
+
+On the eighth day of Christmas…
+
+…you’re going to load data into R!
+
+For this we use the function, read.csv(). If you have your working directory set, and if your .csv file is in that working directory, then all you need to do is type in the file name. When loading your data, create a new vector and give is a meaningful but short name, such as tree.dat for Christmas tree data.
+
+```{r}
+sl.dat <-read.csv("sleigh.data.csv")
+sl.dat
+```
+
+
+Now retype sl.dat (as I have done here) or highlight it in the code above and run it. You data should pop up directly below the chunk that you just ran. You might also notice that sl.dat is now in your Environment -----> check it out. Try clicking on sl.dat and see what happens. You can't edit this file like you would with Excel by clicking and typing, this is just a preview. But it is helpful if you want to see what the data look like.
+
+You can also use str(sl.dat) to get a more concise summary of your data. Santa’s is looking to buy a new sleigh. His elves put together this list of the top models on the market. 
+
+```{r}
+str(sl.dat)
+```
+
+This dataset includes nine columns and 34 rows. The columns include:
+
+name = name of the sleigh model (there are 33 rows of sleigh models).
+
+km_per_carrot = how many kilometres the sleigh can go based on reindeer energy (measured in carrots)
+
+bag_space = the amount of space in the back of the sleigh for Santa’s toy bag. Units aren’t important.
+
+deer power = similar to horsepower in cars
+
+width = width of the sleigh in meters
+
+weight = weight of the sleigh in grams (sleighs are magical and thus weigh VERY little!)
+
+colour = 0 is the code for green and 1 is the code for red. Santa wouldn’t even consider any other colours.
+
+reins = the number of reins the sleigh is equipped with
+
+bells = number of magical bells on the sleigh.
+
+Note that the different variables are represented as different data types: name is a character, km_per_carrot is numeric (numbers that contain a decimal), bells is an integer (whole numbers). Logical is another data type, which is for data that have a value or TRUE or FALSE, but we don't have any logical data in this dataset.
+
+**Note**
+If your file was not in your working directory, you would need to specify the location. You would use similar code to when you set your working directory.
+
+E.g. if your file was on the Desktop, you might use:
+
+read.csv(“~Desktop/“sleigh.data.csv”)
+
+Note: these data are based on a preloaded R dataset called mtcars. I edited it to fit the theme, and I removed a few columns to make it slightly simpler.
+
+
+### DAY 9 ###
+On the ninth day of Christmas…
+
+…you’re going to have a look at the data you loaded yesterday!
+
+Make sure your data are loaded. Let’s have a look at just the column names so we are reminded of the position of each column.
+
+```{r}
+colnames(sl.dat)
+```
+
+You can do the same for rows, which isn’t as meaningful here, but could be with other datasets.
+```{r}
+rownames(sl.dat)
+```
+
+We want to isolate the column that looks at how much deerpower the sleighs have. There are several ways we can do this, one way is to identify the column position.
+
+```{r}
+sl.dat[,4] 
+```
+
+Note we use [ ] instead of ( ).
+
+Now we want to look at a single row. Let’s look at the Christmas Cruiser. This is the 5th line down in our dataset.
+
+```{r}
+sl.dat[5,]
+```
+
+Let’s say we just want to call up how much bag space the Christmas Cruiser has and ignore the other stuff
+
+```{r}
+sl.dat[5,3]
+```
+
+### DAY 10 ###
+
+On the tenth day of Christmas…
+
+..you’re going to learn how to install packages!
+
+What are packages you ask? (pretend you asked)
+
+Let me tell you! “R packages are a collection of R functions, complied code and sample data. They are stored under a directory called "library" in the R environment.” (https://www.tutorialspoint.com/r/r_packages.htm). If you click on the “packages” tab in R studio you can see all the packages you currently have downloaded in R. Loaded packages will have checkmarks beside them. 
+
+We’re going to install “dplyr” which is a SUPER useful app for data-wrangling.
+
+```{r}
+install.packages("dplyr")
+```
+
+Pause and wait for it to install…then load the new package!
+
+```{r}
+library(dplyr)
+```
+
+Note, the package name must be in "" to install, but not to load.
+
+Like with functions, you can use ?dplyr to learn more about the package.
+```{r}
+?dplyr
+```
+
+**TIP** If you close R and reopen it another time, you will need to reload the package (but not reinstall it). This is also true for any vectors or data you previously ran. Many things will need to be rerun….for this reason I often leave R Studio open.
+
+I usually keep a list of packages at the top of a R script I’m working on and run them when I reopen a file. 
+
+Example:
+
+library(dplyr)
+library(vegan)
+library(lme4)
+library(ggplot2)
+
+### DAY 11 ###
+
+On the eleventh day of Christmas…
+
+…you’re going to learn how to check which version of R you’re using and how to update packages.
+
+R and its many packages are often being updated and improved by the amazing R community and development team. This means that sometimes you need to update R or packages.
+
+First, how to find out which version you’re currently using:
+
+It’s easy! Run this simple code:
+
+```{r}
+R.version
+```
+
+*Note: this will give you the version of R you’re using, not the version of R Studio. Both may need to be periodically updated.
+
+What about updating packages?
+
+First, you can find out if any of your packages have available updates:
+
+```{r}
+old.packages()
+```
+
+Then you can update them with this code:
+
+```{r}
+update.packages()
+```
+
+If you want to update them all without having to give permission:
+
+```{r}
+update.packages(ask=FALSE)
+```
+
+Oh geez, I just test-ran this code and it took a while to update all my packages!! So here's a fun little fact. If you are running code that takes a while (think big datasets, fancy models...it can take minutes, hours, days even!), you can use the package beepr to alert you when your code has finished running. This is handy if you want to check emails, play a few rounds of Solitaire, or catch up on some online Christmas shopping...
+
+Try it:
+```{r}
+install.packages("beepr")
+library(beepr)
+
+beep(2)
+```
+
+Beep(2) is my favourite (and also my text tone on my phone). Here are some of the other sounds, just change the number in the brackets.
+1. "ping"
+2. "coin"
+3. "fanfare"
+4. "complete"
+5. "treasure"
+6. "ready"
+7. "shotgun"
+8. "mario"
+9. "wilhelm"
+10. "facebook"
+
+To use this, you would run your line of code for your fancy model (or whatever) and then immediately run your beep() function. R will run the beep() as soon as it finishes with your time-consuming code.
+
+
+### DAY 12 ###
+
+On the twelfth day of Christmas…
+
+…you get to subset data by rows!
+
+We’re going to subset the data for the different sleigh types and create new vectors. 
+
+Easy peasy! We first tell R which data to use, then identify the condition to subset by.
+
+Let’s organize green and red sleighs into separate vectors.
+```{r}
+red <-subset(sl.dat, colour==0)
+green <-subset(sl.dat, colour==1)
+red
+green
+```
+
+You can highlight and run red and green here, or type them out and run them. Check to see that it worked.
+
+**Note: you need to use double == here instead of =
+
+You can go further and subset rows from your subsets.
+
+```{r}
+heavy.red <-subset(red, weight>2)
+heavy.red
+```
+
+This now includes only red sleighs that weigh more than 2 grams.
+
+**FYI: the function filter() from package dplyr, which we installed the other day, does essentially the same thing as the function subset().
+
+
+### DAY 13 ###
+
+On the thirteenth day of Christmas (unlike the song, our days keep going!)…
+
+…you’re going to subset data by columns.
+
+For this we’re going to use the package you installed recently, dplyr.
+
+There are many ways to subset columns, but we’re going to use select().
+
+Let’s create a new vector called sl_var that subsets out our sleigh variables, and doesn’t include the names of the sleighs. 
+
+```{r}
+sl_var <-select(sl.dat,km_per_carrot:bells)
+sl_var
+```
+
+
+Using select() everything in between the two points identified, so here this includes km_per_carrot, bag_space, deerpower, width, weight, colour, reins, and bells.
+
+If we wanted all of these variables but wanted to exclude deerpower, we can use…
+
+```{r}
+sl_var2 <-select(sl_var, -deerpower)
+sl_var2
+```
+
+
+### DAY 14 ###
+
+On the fourteenth day of Christmas…
+
+…you’re going to learn about another useful dplyr function: mutate()!
+
+Mutate() is used to add a new variable or column to your existing data. Let’s pretend we wanted to know the number of needles dropped per tree by it’s height (I don’t know why we would want to know this…but for the sake of the example we will pretend it’s important).
+
+Let’s load a new dataset called xmas.trees.csv
+
+```{r}
+tree.dat <-read.csv("xmas.trees.csv")
+```
+
+This dataset compares different types of christmas trees. Data were collected on three different types of trees: pines, firs, and spruces. Data collected included the height of the tree, the quality of the fragrance on a scale of 1 to 10,  the number of needles dropped in one week, and the amount of ‘Christmas magic’ the tree had on a continuous scale with imaginary units.
+
+
+```{r}
+tree.dat%>%
+  dplyr::mutate(needles.by.height=tree.dat$needle.drop/tree.dat$height)
+```
+
+First we identify the dataset we want to add the new variable or column to, in this case tree.dat. Then we use this handy little trick %>% that’s called ‘piping’. It means “and then”, as in ‘do this, and then, do that’. Next we identify the package and the function, then name the new column (“needles.by.height”) then tell R what you want the new column values to be, in this case our needle.drop from tree.dat divided by height from tree.dat.
+
+If you wanted R to save this in your CSV file, you need to write a new file. 
+
+You can do this using:
+
+```{r}
+new.tree.dat<-tree.dat%>%
+  dplyr::mutate(needles.by.height=tree.dat$needle.drop/tree.dat$height)
+
+write.csv(new.tree.dat, file="tree.data2.”csv)
+```
+
+So using the same code from above, but saving it as a new vector (“new.tree.dat”) then write it to a new file called “tree.data2.csv”. It will be saved to your working directory.
+
+
+### DAY 15 ###
+
+On the fifteenth day of Christmas (unlike the song, our days keep going!)…
+
+…you’re going to visualize your data.
+
+This is helpful for checking normality or just simply looking at frequencies.
+
+We’re going to create a histogram of deerpower using the hist() function. We could create a subset of data, or, we could simply specify which part of the data we want to focus on using $.
+
+```{r}
+hist(sl.dat$deerpower)
+```
+
+A histogram should show up on the screen!
+
+Maybe we want to look at deerpower for only red sleighs.
+
+```{r}
+hist(red$deerpower)
+```
+
+We previously subsetted red sleighs, so we can run the above code to see deerpower for just our red sleighs.
+
+### DAY 16 ###
+
+On the sixteenth day of Christmas…
+
+…you’re going to continue with data visualization…this time with box plots!
+
+Let’s visualize the amount of Christmas magic by each tree type…
+
+```{r}
+boxplot(xmas.magic~type, data=tree.dat)
+```
+Here ~ means “by”. We’re telling R which are the X and the Y axes.
+
+Let’s create subsets of each of our tree types. Do you remember how to do this?
+
+```{r}
+pines <-dplyr::filter(tree.dat, type=="pine")
+firs <-dplyr::filter(tree.dat, type=="fir")
+spruces <-dplyr::filter(tree.dat, type=="spruce")
+```
+
+Here I’ve specified the package before the function. This can be good to do if you have many packages loaded. Some function names overlap. If you only have dplyr open, you shouldn’t need to do this.
+
+Now let’s just compare the height of pines vs. spruces.
+
+```{r}
+boxplot(pines$height, spruces$height)
+```
+
+And because it’s Christmas, let’s add a little Christmas cheer:
+
+```{r}
+boxplot(pines$height, spruces$height, col=c("red", "forestgreen"), names=c("Pines", "Spruces"), ylab="Tree Height")
+```
+
+There are tons of colours you can use in R. Check out http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf for more. I also added the names of the trees to the boxplots and a label for the y-axis.
+
+
+### DAY 17 ###
+
+On the seventeenth day of Christmas…
+
+…you’re going to get some summary statistics from data.
+
+First let’s create a new character vector, which will contain two levels: naughty vs. nice. Then we will make a numeric vector with kids’ ages listed. The order here is important for the two to match up.
+
+```{r}
+xmas <- c("naughty","nice","nice","naughty","nice","naughty","nice","naughty") 
+kids_age <-c(2,6,7,10,3,4,5,9)
+```
+
+We can get the max and min ages of kids with these two functions:
+```{r}
+max(kids_age)
+min(kids_age)
+```
+
+We can also get the mean:
+```{r}
+mean(kids_age)
+```
+
+We use function tapply() to get the mean age in each category: naughty vs. nice.
+Use ?tapply() to learn more about this function. First we specify our X values, then our factors, then the function we wish to apply.
+
+```{r}
+tapply(kids_age, xmas, mean)
+```
+
+
+Now, let’s have a look at our trees dataset and get some summary statistics.
+
+We can do this simply with:
+
+```{r}
+summary(tree.dat$height)
+```
+
+
+This gives us the summary statistics for all tree heights. The summary() function is also the one we use after we perform a statistical test and want a summary of the results (e.g. a linear regression).
+
+If we want the mean ‘Christmas Magic’ for just the pines, we can use our pines subset:
+
+```{r}
+mean(pines$xmas.magic)
+```
+
+and for spruces:
+
+```{r}
+mean(spruces$xmas.magic)
+```
+
+
+Are they statistically different? Hmm… let’s run a t-test to find out.
+
+```{r}
+t.test(pines$xmas.magic, spruces$xmas.magic)
+```
+### DAY 18 ###
+
+On the eighteenth day of Christmas…
+
+…you’re going to learn how to create a new data frame. And we’re going to toss some NAs in there to  deal with tomorrow!
+
+We’ll be using the data.frame() function from base R. We’ll also be using the rep() function which stands for ‘repeated’.
+
+```{r}
+tree.dat3 <-data.frame(type =c(rep("pine",5), rep("spruce",5), rep("maple",5)), xmas.magic=c(rep("8",5),rep("6",5), rep(NA,5)))
+tree.dat3
+```
+
+
+So here we named our new data frame tree.dat3. Then we used the function data.frame to create a data frame with two columns: type and xmas.magic. We have 15 rows with 5 each of pines, spruces, and maples. Then we have scores for each of the three tree types. Each of the pines had a score of 8, each spruce was assigned a score of 6, and each maple was assigned NA because they don’t have any Christmas magic!
+
+Highlight and run tree.dat3 to see your new data.frame!
+
+***Note: NA should not be in quotation marks, otherwise R will not recognize it as missing data, but as a variable you just happen to be referring to as “NA” (e.g. someone’s initials). If you don't see the NAs, try clicking the little "2" or "Next" in the bottom right of your data, or open tree.dat3 from your Environment.
+
+
+### DAY 19 ###
+
+On the nineteenth day of Christmas…
+
+…you get to deal with those nasty, annoying NAs that we put into our new data.frame from yesterday tree.dat3.
+
+There are lots of ways you can deal with NAs in a dataset. First I should mention, that if you’re organizing your own data for a project, do not leave blanks in your data file. Instead use “NA” with no spaces or periods.
+
+We’re going to go ahead and just exclude all rows that include NAs. In this simple case, we could just remove all of our maples, but if the NAs were spread across different types of trees, removing the NAs would be easier. So I will show you how to do that.
+
+We’re going to use the  na.omit() function:
+
+```{r}
+tree.dat4 <-na.omit(tree.dat3)
+```
+
+This creates yet another tree dataset but without missing data.
+
+Here’s a good resource for other things you can do with missing data:
+https://www.statmethods.net/input/missingdata.html
+
+
+### DAY 20 ###
+
+On the twentieth day of Christmas…
+
+…you’re going to learn how to do a simple linear regression in R.
+
+First we *should* check assumptions of linear regression, but for the purpose of this calendaR, I'm going to assume you already did that. Here is one resource you can use to find information for checking assumptions: https://www.r-bloggers.com/checking-glm-model-assumptions-in-r/.
+
+To run our simple linear regression, we will use the function lm(). For this you will be using the package, “stats”. If it tells you the function does not exist, it means you need to download this package.
+
+Name your model. Let’s call it tree.lm (for tree linear model). We’re going to test if there is a relationship between tree fragrance and the amount of ‘Christmas magic’ it has. Let’s say our hypothesis is that as tree fragrances increases, the amount of ‘Christmas magic’ is produces also increases. Let’s test that…
+
+```{r}
+tree.lm <-lm(fragrance~xmas.magic, data=tree.dat)
+```
+
+Nothing happened right? This is where we use the summary() function to get our results
+
+```{r}
+summary(tree.lm)
+```
+
+What did you find? Is there a ‘significant’ relationship between the fragrance a tree has and its ‘Christmas magic’? Given that the p-value is close to 0, we can say that it supports our hypothesis.
+
+
+### DAY 21 ###
+
+On the twenty-first day of Christmas…
+
+…you’re going to plot the results of your simple regression from yesterday!
+
+```{r}
+plot(fragrance~xmas.magic, data=tree.dat)
+```
+
+Here we don’t need to specify the type of plot and R will choose for us based on the data we’re provided. 
+
+If we want a trend line, we use abline() function:
+
+```{r}
+plot(fragrance~xmas.magic, data=tree.dat)
+abline(tree.lm)
+```
+This plots the line on top of our graph based on the results of our linear model.
+
+**NOTE** if you got an error when you tried to run abline(), try running the whole chunk at the same time. Click the green arrow to the right or highlight and run both lines of code.
+
+
+### DAY 22 ###
+
+On the twenty-second day of Christmas…
+
+…you’re going to customize your scatter plot from yesterday.
+
+There are lots of ways to customize plots, I’m just going to show you a few.
+
+```{r}
+ plot(fragrance~xmas.magic, data=tree.dat, col=11, pch=36, cex=4)
+```
+ 
+Okay, that’s hideous, let’s make it better….
+
+```{r}
+plot(fragrance~xmas.magic, data=tree.dat, cex=1.5, bg=10, pch=23, xlab="Tree Fragrance", ylab="Christmas Magic")
+```
+  
+
+A bit better, and a bit more christmassy!
+
+If you want to add your line back on, do so after you have your plot looking how you want it.
+
+```{r}
+plot(fragrance~xmas.magic, data=tree.dat, cex=1.5, bg=10, pch=23, xlab="Tree Fragrance", ylab="Christmas Magic")
+abline(tree.lm)
+```
+**Got an error?** see note from yesterday.
+
+Just a few options, there are many more you can find online including fonts, x & y axis limits, margins, titles, etc.
+
+col = colour
+cex = size of points
+bg = background colour
+pch = point style
+xlab = X label
+ylab = Y label
+lty = line type (dashed, dotted, etc.)
+col.lab = label colours
+
+If you want more, check out this resource: https://www.tutorialspoint.com/r/r_scatterplots.htm
+
+
+### DAY 23 ###
+
+On the twenty-third day of Christmas…
+
+…you’re going to learn some handy tips with ##s.
+
+If you add # in front of text, R will ignore it. This is great for keeping notes right in your R script.
+
+For example:
+
+```{r}
+library(dplyr) #great package for data-wrangling
+```
+
+
+t.test(pines$xmas.magic, spruces$xmas.magic) #ran a t-test to compare mean xmas magic for pines and spruces 
+
+If you run that line of code, R will only focus on everything that comes before the #. Keeping good notes will help you later when you’re trying to remember what’s what in your code.
+
+Another fun tip: if you have a lot of code in a single R script, you can add many ### and R will group everything underneath it and you can choose to hide it.
+
+For example:
+
+########## Linear Models ###########
+
+Try it!
+
+You'll notice that we've been doing this with each day of the calendaR.
+
+
+### DAY 24 ###
+
+On the twenty-fourth day of Christmas…
+
+…you will learn about some other important R resources!
+
+The R community is full of amazing and talented people. If you can’t figure something out or want to learn something in R, there are many resources. 
+
+Here are a couple I use regularly: 
+https://stackoverflow.com
+https://www.r-bloggers.com
+
+And these cheatsheets are permanent tabs in my browser:
+https://rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf
+https://rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf
+
+ggplot2 is a powerful data visualization package. 
+Learn more about it here:
+https://www.r-graph-gallery.com/ggplot2-package.html
+
+
+If you want to learn more in R, there are MANY good tutorials online. Here is just one good resource:
+https://www.statmethods.net/index.html
+
+Most of what I’ve learned in R has been through watching youtube videos, going through online tutorials, and then reaching out to friends or the online community when I get stuck. It can be frustrating, but it is mostly a fun and interesting challenge! 
+
+
+### DAY 25 ###
+
+**MERRY CHRISTMAS!!!**
+
+I hope you enjoyed this little R tutorial advent calendar. You should now have an R script summarizing everything from this tutorial in one place. You can save it to return to later if you’re trying to remember how to do something basic.
+
+Here’s the last code of month. You don’t need to try to understand this code (though hopefully you will recognize some things). Run it to see what it produces! I borrowed this from https://www.r-bloggers.com/make-a-christmas-tree-in-r-with-random-ornamentspresents/.
+
+Make sure you run all the code together at one!
+```{r}
+plot(1:10,1:10,xlim=c(-5,5),ylim=c(0,10),type="n",xlab="",ylab="",xaxt="n",yaxt="n")
+
+rect(-1,0,1,2,col="tan3",border="tan4",lwd=3)
+polygon(c(-5,0,5),c(2,4,2),col="palegreen3",border="palegreen4",lwd=3)
+polygon(c(-4,0,4),c(3.5,5.5,3.5),col="palegreen4",border="palegreen3",lwd=3)
+polygon(c(-3,0,3),c(5,6.5,5),col="palegreen3",border="palegreen4",lwd=3)
+polygon(c(-2,0,2),c(6.25,7.5,6.25),col="palegreen4",border="palegreen3",lwd=3)
+
+points(x=runif(4,-5,5),y=rep(2,4),col=sample(c("blue","red"),size=4,replace=T),cex=3,pch=19)
+points(x=runif(4,-4,4),y=rep(3.5,4),col=sample(c("blue","red"),size=4,replace=T),cex=3,pch=19)
+points(x=runif(4,-3,3),y=rep(5,4),col=sample(c("blue","red"),size=4,replace=T),cex=3,pch=19)
+points(x=runif(4,-2,2),y=rep(6.25,4),col=sample(c("blue","red"),size=4,replace=T),cex=3,pch=19)
+points(0,7.5,pch=8,cex=5,col="gold",lwd=3)
+
+xPres = runif(10,-4.5,4.5)
+xWidth = runif(10,0.1,0.5)
+xHeight=runif(10,0,1)
+for(i in 1:10){
+  rect(xPres[i]-xWidth[i],0,xPres[i]+xWidth[i],xHeight[i],col=sample(c("blue","red"),size=1))
+  rect(xPres[i]-0.2*xWidth[i],0,xPres[i]+0.2*xWidth[i],xHeight[i],col=sample(c("gold","grey87"),size=1))
+}
+
+```
+
+### WANT MORE R? ###
+
+Check out my ggplot advent calendaR:
+https://github.com/kiirsti/ggplot_adventcalendaR
