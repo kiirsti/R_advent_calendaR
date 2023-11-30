@@ -19,6 +19,9 @@ If you enjoyed the calendaR and would like to show your appreciation, please con
 
 *** TO GET STARTED ***
 
-Download the folder advent_calendaR and put it on your Desktop. Then... wait for December 1st ;)
+1. Download the folder advent_calendaR and put it on your Desktop.
+2. Open the .rmd file. This contains the entire advent calendaR (all 25 days of R!).
+
+Then... wait for December 1st ;)
 
 
