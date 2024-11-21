@@ -1,6 +1,8 @@
 # R_advent_calendaR
 The original R advent calendaR that teaches the basics in R
 
+<img src="advent_calendaR.jpg" alt="Holiday-themed banner image that says, 25 days of chRistmas: an R advent calendaR. Created by Kiirsti Owen">
+
 -----
 
 Thanks for your interest in the R advent calendaR!
